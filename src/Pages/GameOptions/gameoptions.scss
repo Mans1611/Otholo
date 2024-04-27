@@ -1,0 +1,27 @@
+svg{
+    width: 60px;
+    height: 60px;
+}
+.levels{
+    .option{
+        font-size: 16px;
+        padding:10px;
+    }
+}
+.btns{
+
+    .start_wrapper{
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        a{
+            margin: 5px;
+            padding:5px 10px ;
+            color: #fff;
+            background-color: #006c00;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 28px;
+        }
+    }
+}
