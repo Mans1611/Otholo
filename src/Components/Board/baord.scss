@@ -1,0 +1,30 @@
+$board-width:500px;
+.board_wrapper{
+    width: $board-width;
+    height: $board-width;
+    background-color: #ed7626;
+    .row{
+        display: flex;
+        border-bottom: 2px solid #ed7626;
+        .cell{
+            border-right: 2px solid #ed7626;
+            width: calc($board-width/8);
+            height: calc($board-width/8);
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .circle{
+                width: 70%;
+                height: 70%;
+                border-radius: 50%;
+                &.black{
+                    background-color: #202020;
+                }
+                &.white{
+                    background-color: #ed7626;
+                }
+            }
+        }
+    }
+}

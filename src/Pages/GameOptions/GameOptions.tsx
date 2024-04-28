@@ -4,14 +4,21 @@ import './gameoptions.scss'
 import { AppContext } from '../../Context/AppContext'
 import ComputerIcon from '@mui/icons-material/Computer';
 import FaceIcon from '@mui/icons-material/Face';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const GameOptions = () => {
     const {gameOption,setGameOption,gameLevel,
         setGameLevel} = useContext(AppContext);
-
+    const RestOptions = ()=>{
+        setGameOption(null);
+        setGameLevel(null);
+    }
   return (
     <div className='homepage optionpage'>
          <div className="btns">
             <h1 className='game-title'>Select Mode</h1>
+            <div className="back_wrapper">
+                <Link onClick={RestOptions} to='/'><ArrowBackIcon/>Back</Link>
+            </div>
             <button className={`option gameoptions ${gameOption === 'HvH'? 'active':''}`} onClick={()=>{setGameOption('HvH');setGameLevel(null)}}><FaceIcon/> vs <FaceIcon/></button>
             <button className={`option gameoptions ${gameOption === 'HvC'? 'active':''}`} onClick={()=>setGameOption('HvC')}><FaceIcon/> vs <ComputerIcon/></button>
             {gameOption === 'HvC' && 

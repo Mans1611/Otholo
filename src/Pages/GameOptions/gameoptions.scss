@@ -9,7 +9,19 @@ svg{
     }
 }
 .btns{
-
+    .back_wrapper{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        a{
+            margin: 5px;
+            padding:5px 10px ;
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 28px;
+        }
+    }
     .start_wrapper{
         width: 100%;
         display: flex;
