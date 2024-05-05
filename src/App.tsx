@@ -19,7 +19,6 @@ function App() {
     <div className="App">
       <AppContext.Provider value={{
         page,setPage,
-        myTurn,setMyTurn,
         gameOption,setGameOption,
         gameLevel,setGameLevel}}>
         <Router>

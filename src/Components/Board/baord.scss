@@ -1,7 +1,7 @@
 $board-width:500px;
 .board_wrapper{
-    width: $board-width;
-    height: $board-width;
+    width: fit-content;
+    height: fit-content;
     background-color: #ed7626;
     .row{
         display: flex;
@@ -15,8 +15,8 @@ $board-width:500px;
             justify-content: center;
             align-items: center;
             .circle{
-                width: 70%;
-                height: 70%;
+                width: 80%;
+                height: 80%;
                 border-radius: 50%;
                 &.black{
                     background-color: #202020;
@@ -24,6 +24,13 @@ $board-width:500px;
                 &.white{
                     background-color: #ed7626;
                 }
+            }
+            .validPlace{
+                width: 50%;
+                height: 50%;
+                border-radius: 50%;
+                background-color: #006400b9;
+                cursor: pointer;
             }
         }
     }

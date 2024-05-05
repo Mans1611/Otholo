@@ -1,0 +1,23 @@
+.game_options_wrapper{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-around;
+    button{
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        &.reset_btn{
+            background-color: #aa1313c8;
+            color: #ffffff;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover{
+                background-color: #9f3131c8;
+
+            }
+        }
+    }
+}
