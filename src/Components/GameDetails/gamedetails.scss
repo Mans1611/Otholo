@@ -3,8 +3,9 @@
     border-radius: 10px;
     padding: 5px;
     height: 400px;
-    min-width: 30%;
+    min-width: 20%;
     margin-left: 50px;
+    max-height: 350px;
     .header{
         display: flex;
         align-items: center;
@@ -26,7 +27,6 @@
             }
         }
     }
-    overflow: hidden;
     .game_history_wrapper{
         .title{
             text-align: center;
@@ -34,7 +34,66 @@
             color: #f0f0f0;
         }
         .history{
-            overflow-y: scroll;
+            border-radius: 10px;
+            background-color: #121212;
+            max-height: 180px;
+            overflow-y: auto;
+            overflow-x: hidden; /* Added overflow-x property */
+            padding: 5px;
+            max-width: 300px;
+            position: relative; /* Added position: relative */
+            .history_item{
+                padding: 2px;
+                border-bottom: 2px solid #f0f0f0;
+                color: #f0f0f0;
+                background-color: #272727;
+                border-radius: 3px;
+                margin: 4px 0;
+                cursor: pointer;
+                transition: all 200ms;
+                position: relative;
+                z-index: 88;
+                display: flex;
+                justify-content: space-between;
+                .circle{
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    border: 2px solid #f0f0f0;
+                    margin-left: 10px;
+                    &.orange{
+                        background-color: #ed7626;
+                    }
+                    &.black{
+                        background-color: #373737;
+                    }
+                }
+                &:hover{
+                    z-index: 89;
+                    background-color: #ed762629;
+                  
+                }
+            }
+            /* width */
+            &::-webkit-scrollbar {
+                width: 15px;
+                border-radius: 7px;
+            }
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: #272727;
+            }
+            
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: #080808;
+                border-radius: 7px;
+            }
+            
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: #050505;
+            }
         }
     }
 }

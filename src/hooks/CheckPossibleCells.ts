@@ -1,4 +1,6 @@
-export const checkPossiblePlaces = (board:(null|number)[][], row:number, col:number, player:number)=>{
+import { BoardType } from "../Context/GameContext";
+
+export const checkPossiblePlaces = (board:BoardType, row:number, col:number, player:number)=>{
         // Check if the specified position is empty
         if (board[row][col] !== null) {
             return false;

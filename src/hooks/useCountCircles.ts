@@ -1,5 +1,6 @@
+import { BoardType } from "../Context/GameContext";
 
-export const useCountCircles = (board:(number|null)[][])=>{
+export const useCountCircles = (board:BoardType)=>{
     let white=0,black=0;
     for(let i = 0; i < board.length;i++){
         for(let j = 0; j < board[i].length;j++){

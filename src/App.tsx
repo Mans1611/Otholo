@@ -4,14 +4,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import GameOptions from './Pages/GameOptions/GameOptions';
 import GamePlay from './Pages/GamePlay/GamePlay';
-import { createContext, useState } from 'react';
+import { useState } from 'react';
 import { AppContext } from './Context/AppContext';
 
 
 
 function App() {
-  const [page,setPage]=useState<string>('home');
-  const [myTurn,setMyTurn]=useState<boolean>(true);
+  const [ page,setPage]=useState<string>('home');
   const [ gameOption,setGameOption] = useState<string|null>(null)
   const [ gameLevel,setGameLevel] = useState<string|null>(null)
 

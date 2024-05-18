@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import './gameplay.scss';
 import Board from '../../Components/Board/Board';
 import ResultWrapper from '../../Components/ResultWrapper/ResultWrapper';
@@ -10,7 +10,7 @@ import GameDetails from '../../Components/GameDetails/GameDetails';
 const GamePlay = () => {  
   document.title = 'Game Play';
 
-  const [turn,setTurn] = useState(0);
+  const [turn,setTurn] = useState(1);
   const [board,setBoard] = useState <BoardType>(intialBoard);
   const [history,setHistory] = useState <BoardType[]>([intialBoard]);
   

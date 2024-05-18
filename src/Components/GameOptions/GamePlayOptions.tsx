@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import './gameoptions.scss'
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import {  GameContext, BoardType } from '../../Context/GameContext';
