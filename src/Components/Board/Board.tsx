@@ -3,7 +3,7 @@ import { BoardType, GameContext } from '../../Context/GameContext';
 import { checkPossiblePlaces } from '../../hooks/CheckPossibleCells';
 import { ChangeBoard } from '../../utilis/ChangeBoard';
 import { AppContext } from '../../Context/AppContext';
-import { cloneBoard, minimax } from '../../utilis/minimax';
+import { cloneBoard, alpha_beta, minimax } from '../../utilis/minimax';
 
 import './baord.scss';
 
@@ -15,7 +15,7 @@ const Board:React.FC = () => {
   const [disabled,setDisabled] = useState(false); // this variable for disabling the user from clicking on the cell while the algorithim is being called.
 
   const handleBoardChange = (row:number,col:number)=>{
-    let cloned = JSON.parse(JSON.stringify(board));
+    let cloned = JSON.parse(JSON.stringify(board)); // making a deep copy of the board/.
     setHistory((arr:BoardType[])=>[...arr,cloned]); // add the latest board to the history.
     let newBoard:BoardType;
     setBoard((board:BoardType)=>{
@@ -27,7 +27,7 @@ const Board:React.FC = () => {
       setDisabled(true);
       setTimeout(()=>{
         // i here make it asynchronoys, so that the latest board change get updated, and also feel the user that there an opponent plays against him.
-        const {board:Board} = minimax(board,gameLevel === 'hard'? 2:1,false);
+        const {board:Board} = minimax(board,gameLevel === 'hard'? 2:1,false);// using depth 2 for hard, and depth of 0 for easy.
         setBoard(Board);
         setDisabled(false);
       },100)
@@ -36,8 +36,6 @@ const Board:React.FC = () => {
     else{
       setTurn((prevTurn:number)=>(prevTurn + 1) % 2);   // this means that i am in HvH (Human vs Human), and i will trigger the turn.
     }
-   
-    
     }
   return (
     <div className="board_wrapper">

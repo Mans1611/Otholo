@@ -1,15 +1,10 @@
 import { BoardType } from "../Context/GameContext";
+import { evaluateBoard } from "../heuristics/evaluateBoard";
 import { checkPossiblePlaces } from "../hooks/CheckPossibleCells";
 import { ChangeBoard } from "./ChangeBoard";
 
 
 
-export const evaluateBoard=(board:BoardType)=> {
-    // Example: evaluate based on the difference in number of pieces
-      const playerPieces = board.flat().filter(piece => piece === 1).length;
-      const computerPieces = board.flat().filter(piece => piece === 0).length;
-      return playerPieces - computerPieces;
-}
 
 export const cloneBoard = (board:BoardType)=> {
     // since assingment take value by reference. so i want to make a shallow copy.
@@ -23,9 +18,15 @@ const applyMove=(board:BoardType, row:number, col:number, player:number)=> {
 
 // this function check if there a possible place cell.
 export const isTerminalNode = (board:BoardType):boolean=> board.flat().every((val)=> val === 1 || val === 0); // this function check if we are in the terminal node.
+
+const isValidMove = (board:BoardType, row:number, col:number, player:number):boolean=>  {
+    // Check if the specified position is empty
+    if (board[row][col] !== null) 
+        return false;
+    return true;
+} 
   
-  
-export  const minimax = (board:BoardType, depth:number, maximizingPlayer:boolean, alpha:number=-Infinity, beta:number=Infinity)=>{
+export  const alpha_beta = (board:BoardType, depth:number, maximizingPlayer:boolean, alpha:number=-Infinity, beta:number=Infinity)=>{
     // this  is alpha beta burining algorthim
     if (depth === 0 || isTerminalNode(board)) {
         return {score:evaluateBoard(board),board:null};
@@ -39,7 +40,7 @@ export  const minimax = (board:BoardType, depth:number, maximizingPlayer:boolean
                 if (checkPossiblePlaces(board, row, col, 1)) {
                 let clonedBoard = cloneBoard(board); // cloning the board, make a new deep copy of the board.
                 applyMove(clonedBoard, row, col, 1);
-                let boardVal = minimax(clonedBoard, depth - 1, false, alpha, beta).score;
+                let boardVal = alpha_beta(clonedBoard, depth - 1, false, alpha, beta).score; // naking a recursion call
                
                 if(boardVal>maxEval){
                   maxEval = boardVal;
@@ -60,7 +61,7 @@ export  const minimax = (board:BoardType, depth:number, maximizingPlayer:boolean
             if (checkPossiblePlaces(board, row, col, 0)) {
                 const clonedBoard = cloneBoard(board) // here i clone the board, since i don't want to take reference.
                 applyMove(clonedBoard, row, col, 0);
-                let boardVal = minimax(clonedBoard, depth - 1, true, alpha, beta).score ;
+                let boardVal = alpha_beta(clonedBoard, depth - 1, true, alpha, beta).score ;
                 if(boardVal < minEval){
                   minEval = boardVal;
                   bestMove = clonedBoard;
@@ -74,5 +75,48 @@ export  const minimax = (board:BoardType, depth:number, maximizingPlayer:boolean
           }
         }
         return {score:minEval,board:bestMove};
+    }
+}
+
+
+export const minimax = (board:BoardType, depth:number, maximizingPlayer:boolean) => {
+    if (depth === 0 || isTerminalNode(board)) 
+        return { score: evaluateBoard(board), board: null }; // you can change heurastic by chabging the evaluateBoard function to evaluateCorners, which is the second heuristic
+    
+
+    if (maximizingPlayer) {
+        let maxEval = -Infinity;
+        let bestMove = null;
+        for (let row = 0; row < board.length; row++) {
+            for (let col = 0; col < board[row].length; col++) {
+                if (isValidMove(board, row, col, 1)) {
+                    const newBoard = cloneBoard(board);
+                    applyMove(newBoard, row, col, 1);
+                    let boardVal = minimax(newBoard, depth - 1, false).score;
+                    if (boardVal > maxEval) {
+                        maxEval = boardVal;
+                        bestMove = newBoard;
+                    }
+                }
+            }
+        }
+        return { score: maxEval, board: bestMove };
+    } else {
+        let minEval = Infinity;
+        let bestMove = null;
+        for (let row = 0; row < board.length; row++) {
+            for (let col = 0; col < board[row].length; col++) {
+                if (isValidMove(board, row, col, 0)) {
+                    const newBoard = cloneBoard(board);
+                    applyMove(newBoard, row, col, 0);
+                    let boardVal = minimax(newBoard, depth - 1, true).score;
+                    if (boardVal < minEval) {
+                        minEval = boardVal;
+                        bestMove = newBoard;
+                    }
+                }
+            }
+        }
+        return { score: minEval, board: bestMove };
     }
 }

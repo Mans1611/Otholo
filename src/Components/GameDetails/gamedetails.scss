@@ -27,27 +27,43 @@
             }
         }
     }
+    text-align: center;
+    color: #fff;
+    .game_result{
+        margin: 5px;
+        background-color: #ed7626;
+        border-radius: 10px;
+        font-size: 28px;
+        font-weight: 500;
+        color: #292929;
+        padding: 5px;
+    }
     .game_history_wrapper{
+        display: flex;
+        flex-direction: column;
         .title{
             text-align: center;
             font-size: 24px;
             color: #f0f0f0;
+            margin-bottom: 5px;
         }
         .history{
+            flex-grow: 1;
             border-radius: 10px;
             background-color: #121212;
-            max-height: 180px;
             overflow-y: auto;
             overflow-x: hidden; /* Added overflow-x property */
             padding: 5px;
-            max-width: 300px;
             position: relative; /* Added position: relative */
+            text-align: center;
+            color: #f0f0f0;
+            max-height: 230px;
             .history_item{
                 padding: 2px;
                 border-bottom: 2px solid #f0f0f0;
                 color: #f0f0f0;
                 background-color: #272727;
-                border-radius: 3px;
+                border-radius: 5px;
                 margin: 4px 0;
                 cursor: pointer;
                 transition: all 200ms;
@@ -70,7 +86,7 @@
                 }
                 &:hover{
                     z-index: 89;
-                    background-color: #ed762629;
+                    background-color: #ed752694;
                   
                 }
             }
