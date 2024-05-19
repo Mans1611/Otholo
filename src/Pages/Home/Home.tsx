@@ -1,9 +1,6 @@
-import React, { useContext } from 'react'
 import './homepage.scss'
-import { AppContext } from '../../Context/AppContext'
 import { Link } from 'react-router-dom';
 const Home = () => {
-    const {setPage} = useContext(AppContext);
 
   return (
     <div className='homepage'>

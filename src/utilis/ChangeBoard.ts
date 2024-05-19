@@ -22,7 +22,7 @@ export const ChangeBoard = (board:BoardType,row:number,col:number,turn:number,di
         while ( x >= 0 && x < 8 && 
             y >= 0 && y < 8 && 
             board[x][y] !== null && 
-            board[x][y]!=turn) 
+            board[x][y]!==turn) 
             {   
             dict.add(`${x}-${y}`);
             ChangeBoard(board,x,y,turn,dict);

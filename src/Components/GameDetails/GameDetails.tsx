@@ -1,14 +1,13 @@
 import React, { useContext } from 'react'
 import './gamedetails.scss'
-import { BoardType, GameContext } from '../../Context/GameContext'
+import { GameContext } from '../../Context/GameContext'
 import {  isTerminalNode } from '../../utilis/minimax';
 import { AppContext } from '../../Context/AppContext';
-import { useCountCircles } from '../../hooks/useCountCircles';
-import History_Item from '../HistoryItem/History_Item';
+import HistoryItem from '../HistoryItem/History_Item';
 import { evaluateBoard } from '../../heuristics/evaluateBoard';
 
 const GameDetails = () => {
-    const {turn,history,board,setBoard} = useContext(GameContext);
+    const {turn,history,board} = useContext(GameContext);
     const {gameOption} = useContext(AppContext);
 
    let isTerminal = isTerminalNode(board);
@@ -34,7 +33,7 @@ const GameDetails = () => {
             <div className="game_history_wrapper">
                 <h2 className="title">Game History</h2>
                 <div className="history">
-                    {history.length>0?history.map((oldBoard,index)=><History_Item 
+                    {history.length>0?history.map((oldBoard,index)=><HistoryItem 
                     key = {index}
                     index= {index} 
                     oldBoard={oldBoard}/>

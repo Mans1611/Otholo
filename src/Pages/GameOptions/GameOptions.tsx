@@ -27,7 +27,7 @@ const GameOptions = () => {
                     <button className={`option ${gameLevel === 'hard' ? 'active':''}`} onClick={()=>setGameLevel('hard')}>Hard</button>
                 </div>
             }
-            {   (gameOption == 'HvH' || (gameOption ==='HvC' && gameLevel)) && 
+            {   (gameOption === 'HvH' || (gameOption ==='HvC' && gameLevel)) && 
                 <div className="start_wrapper">
                     <Link className='start' to='/gameplay'>strats</Link>
                 </div>

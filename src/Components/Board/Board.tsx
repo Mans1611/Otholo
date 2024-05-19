@@ -3,7 +3,7 @@ import { BoardType, GameContext } from '../../Context/GameContext';
 import { checkPossiblePlaces } from '../../hooks/CheckPossibleCells';
 import { ChangeBoard } from '../../utilis/ChangeBoard';
 import { AppContext } from '../../Context/AppContext';
-import { cloneBoard, alpha_beta, minimax } from '../../utilis/minimax';
+import { minimax } from '../../utilis/minimax';
 
 import './baord.scss';
 
