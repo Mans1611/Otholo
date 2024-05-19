@@ -32,7 +32,6 @@ const GamePlayOptions = () => {
       setTurn((prevTurn:number)=>(prevTurn + 1) % 2);  // if i am in mode HvH, if i get back step, i must also change the turn.
 
   }
-  
   return (
     <div className="game_options_wrapper">
         <button className='opt_btn back_step' onClick={GetBackOneStep}>
